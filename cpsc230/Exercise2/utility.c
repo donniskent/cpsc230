@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdbool.h>
-
+#include "utility.h" 
 int userNumber(int min, int max) {
 	int num;
 	while(true){
