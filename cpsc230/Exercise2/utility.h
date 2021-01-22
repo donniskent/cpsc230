@@ -1,6 +1,5 @@
 #ifndef USERNUMBER_H
-#define USERNUMBER_H
-#include <stdbool.h> 
-int userNumber (int min, int max);
+#define USERNUMBER_H 
+int userNumber (int , int );
 
 #endif 
