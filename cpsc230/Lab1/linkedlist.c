@@ -29,12 +29,20 @@ list_t *create_list ()
 }
 
 void free_list (list_t *list) {
-	node_t *current = malloc(sizeof(node_t)); 
 	
+	while (list_size(list) > 0) {
+	node_t *hold = malloc(sizeof(node_t)); 
+	hold->next = NULL; 
+	hold = list->first ; 
+	list->first = list->first->next; 
+	free(hold);
+	list->size -= 1; 	
+	}
 	
-	
-}
+	free(list);
 
+
+}
 
 
 
@@ -77,8 +85,7 @@ list->size+=1;
 
 bool list_insert (list_t *list, int item, int index)
 {
-   if(index >= list_size(list)) {
-   return false;}
+   
 
 	struct node_t *insert = malloc(sizeof(node_t)); 
 	insert->data = item; 
@@ -153,13 +160,14 @@ bool list_remove (list_t *list, int index)
 	
 	}
 
-	else if(index ==( list_size(list)-1)) {
+	else if(index == (list_size(list)-1)) {
 	for(int i = 1; i < index; i++) {
 	current= current->next; 
 	
 	}
 	current->next = NULL; 
-	
+	list->size-=1;
+	return true; 
 	
 	
 	}
@@ -205,7 +213,7 @@ int list_find (list_t *list, int item)
 	
 	
 	
-	
+		
 	
 	}	
 
